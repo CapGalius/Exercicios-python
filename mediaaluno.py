@@ -1,7 +1,42 @@
 nome = input("Digite o nome do aluno: ")
-nota1 = float(input("Digite nota da Prova 1: "))
-nota2 = float(input("Digite nota da Prova 2: "))
-faltas = int(input("Digite o total de faltas: "))
+
+valid_nota = False
+
+while valid_nota == False:
+    nota1 = input("Digite nota da Prova 1: ")
+    try:
+        nota1 = float(nota1)
+        if nota1 <0 or nota1 >10:
+            print("Nota inválida. Use valores entre 0 e 10")
+        else:
+            valid_nota = True
+    except:
+        print("Nota inválida. Use apenas números e separe decimais com '.'")
+    
+valid_nota = False
+
+while valid_nota == False:
+    nota2 = input("Digite nota da Prova 2: ")
+    try:
+        nota2 = float(nota2)
+        if nota2 <0 or nota2 >10:
+            print("Nota inválida. Use valores entre 0 e 10")
+        else:
+            valid_nota = True
+    except:
+        print("Nota inválida. Use apenas números e separe decimais com '.'")
+
+valid_faltas =  False
+while valid_faltas == False:
+    faltas = input("Digite o número de faltas: ")
+    try:
+        faltas = int(faltas)
+        if faltas <0 or faltas >20:
+            print("Número de faltas inválido. Use valores entre 0 e 20")
+        else:
+            valid_faltas = True
+    except Exception as e::
+        print("Númro de faltas inválido")
 
 media = (nota1+nota2)/2
 assid = (20-faltas)/20
