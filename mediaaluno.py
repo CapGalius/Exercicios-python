@@ -35,7 +35,7 @@ while valid_faltas == False:
             print("Número de faltas inválido. Use valores entre 0 e 20")
         else:
             valid_faltas = True
-    except Exception as e::
+    except Exception as e:
         print("Númro de faltas inválido")
 
 media = (nota1+nota2)/2
