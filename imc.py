@@ -10,7 +10,7 @@ while True:
     try:
         peso = float(input("Insira seu peso: "))
         altura = float(input("Insira sua altura: "))
-        sexo = int(input(" Digite 1 para Mas. ou 2 para Fem."))
+        sexo = int(input(" Digite 1 para Mas. ou 2 para Fem.: "))
         break
     except Exception as e:
         print("Dados errados. Repita a operação!")
