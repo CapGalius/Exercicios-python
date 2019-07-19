@@ -4,7 +4,7 @@ print("----Cálculo de IMC -----")
 print("-"*25)
 print("---Insira seus dados:---")
 
-nome = input("Insira seu nome: ").capitalize
+nome = input("Insira seu nome: ").capitalize()
 print("Insira seu peso e altura. Use ponto '.' para decimais")
 while True:
     try:
