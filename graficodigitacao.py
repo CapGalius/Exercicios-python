@@ -1,5 +1,6 @@
 import time
-import matplotlib
+import matplotlib.pyplot as plt
+
 
 print("-"*40)
 print("-"*10, "Teste tempo digitação.", "-"*5)
@@ -18,7 +19,6 @@ while i < 6:
     count_tempo()
     i = i+1
 
-import matplotlib.pyplot as plt
 x = [1,2,3,4,5,6]
 y = grafico
 plt.plot(x,y)
