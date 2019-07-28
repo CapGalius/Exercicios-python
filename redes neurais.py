@@ -1,1 +1,0 @@
-#estudo de redes neurais
