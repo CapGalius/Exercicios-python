@@ -27,4 +27,9 @@ def treinar():
                 print("Peso atualizado: " + str(pesos[j]))
         print("Total de erros: " + str(erroTotal))
        
-treinar()        
+treinar()
+print("Rede Neural Treinada!")
+print(calculaSaida(entradas[0]))
+print(calculaSaida(entradas[1]))
+print(calculaSaida(entradas[2]))
+print(calculaSaida(entradas[3]))
