@@ -1,10 +1,13 @@
 #oprador lógico xor
+#não utilizável em redes neurais multicamada
+
 import numpy as np
 
 #entradas = np.array([[0,0], [0,1], [1,0], [1,1]])
 #saidas = np.array([0, 0, 0, 1])
 #entradas = np.array([[0,0], [0,1], [1,0], [1,1]])
 #saidas = np.array([0, 1, 1, 1])
+
 entradas = np.array([[0,0], [0,1], [1,0], [1,1]])
 saidas = np.array([0, 1, 1, 0])
 pesos = np.array([0.0, 0.0])
