@@ -1,3 +1,4 @@
+#oprador lógico and
 import numpy as np
 
 entradas = np.array([[0,0], [0,1], [1,0], [1,1]])
