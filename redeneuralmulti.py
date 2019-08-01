@@ -16,4 +16,6 @@ pesos1 = np.array([[-0.017],[-0.893],[0.148]])
 epocas = 100
 
 for j in range(epocas):
-    
+    camadaEntrada = entradas
+    somaSinapse0 = np.dot(camadaEntrada, pesos0)
+    camadaOculta = sigmoid(somaSinapse0)
