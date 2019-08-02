@@ -13,5 +13,6 @@
         "-p",
         "test*.py"
     ],
-    "python.testing.promptToConfigure": false
+    "python.testing.promptToConfigure": false,
+    "python.dataScience.jupyterServerURI": " http://localhost:8888/?token=f6fceb32aa5ec4c940c6c4635b92d82b6eecfaa0b1c2a0ab"
 }
