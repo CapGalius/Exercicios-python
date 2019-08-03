@@ -14,5 +14,5 @@
         "test*.py"
     ],
     "python.testing.promptToConfigure": false,
-    "python.dataScience.jupyterServerURI": " http://localhost:8888/?token=f6fceb32aa5ec4c940c6c4635b92d82b6eecfaa0b1c2a0ab"
+    "python.dataScience.jupyterServerURI": "http://127.0.0.1:8888/?token=787d1d18124b289548aca7fb5e4a81d0fefc6ee46a67b14f"
 }

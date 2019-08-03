@@ -1,3 +1,2 @@
-﻿virtualenv --python='/home/galileu/anaconda3/bin/python3' exercicios_env
-source exercicios_env/bin/activate
-jupyter-notebook
+﻿python3.7 -m venv serv
+source serv/bin/activate
