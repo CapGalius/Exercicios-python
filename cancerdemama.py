@@ -9,16 +9,13 @@ def sigmoidDerivada(sig):
     return sig * (1- sig)
 
 base = datasets.load_breast_cancer()
+entradas = base.data
+valoresSaida = base.target
+saidas = np.empty([569,1], dtype=int)
+for i in range(569):
+    saidas[i] = valoresSaida[i]
 
-entradas = np.array([[0,0],
-                     [0,1],
-                     [1,0],
-                     [1,1]])
-
-saidas = np.array([[0],[1],[1],[0]])
-
-
-pesos0 = 2*np.random.random((2,3)) -1
+pesos0 = 2*np.random.random((30,3)) -1
 pesos1 = 2*np.random.random((3,1)) -1
 
 
@@ -52,5 +49,3 @@ for j in range(epocas):
     camadaEntradaTransposta = camadaEntrada.T
     pesoNovo0 = camadaEntradaTransposta.dot(deltaCamadaOculta)
     pesos0 = (pesos0 * momento) + (pesoNovo0 * taxadeAperndizagem)
-    
-    
