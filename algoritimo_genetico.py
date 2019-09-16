@@ -15,7 +15,10 @@ class Individuo():
         self.geracao = geracao
         self.cromossomo = []
         for i in range(len(espacos)):
-           #if random() < 0.5:
+           if random() < 0.5:
+               self.cromossomo.append("0")
+           else:
+               self.cromossomo.append("1")
 
 if __name__ == '__main__':
     #p1 = Produto("Iphone 6", 0.0000899, 2199.12)
