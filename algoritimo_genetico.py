@@ -7,19 +7,16 @@ class Produto():
         self.valor = valor
 
 class Individuo():
-    def __init__(self. espacos, valores, limite_espacos, geracao = 0):
+    def __init__(self, espacos, valores, limite_espacos, geracao = 0):
         self.espacos = espacos
         self.valores = valores
         self.limite_espacos = limite_espacos
         self.nota_avaliacao = 0
         self.geracao = geracao
         self.cromossomo = []
-        
-       for i in range(len(espacos)):
-           if random() < 0.5:
-               
-           
-            
+        for i in range(len(espacos)):
+           #if random() < 0.5:
+
 if __name__ == '__main__':
     #p1 = Produto("Iphone 6", 0.0000899, 2199.12)
     lista_produtos = []
