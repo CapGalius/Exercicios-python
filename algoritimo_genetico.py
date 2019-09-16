@@ -12,6 +12,7 @@ class Individuo():
         self.valores = valores
         self.limite_espacos = limite_espacos
         self.nota_avaliacao = 0
+        self.espaco_usado = 0
         self.geracao = geracao
         self.cromossomo = []
         
@@ -20,6 +21,18 @@ class Individuo():
                self.cromossomo.append("0")
            else:
                self.cromossomo.append("1")
+               
+    def avaliacao(self):
+        nota = 0
+        soma_espacos = 0
+        for i in range(len(self.cromossomo)):
+            if self.cromossomo[i] == '1':
+                nota += self.valores[i]
+                soma_espacos += soma_espacos[i]
+        if soma_espacos > self.limite_espacos:
+            nota = 1
+        self.nota_avaliacao = nota
+        self.espaco_usado = soma_espacos
 
 if __name__ == '__main__':
     #p1 = Produto("Iphone 6", 0.0000899, 2199.12)
@@ -48,8 +61,17 @@ if __name__ == '__main__':
         espacos.append(produto.espaco)
         valores.append(produto.valor)
         nomes.append(produto.nome)
-        limite = 3
-        Individuo1 =  Individuo(espacos, valores, limite)
-        print("Espaços = %s" % str(Individuo1.espacos))
-        print("Valores = %s" % str(Individuo1.valores))
-        print("Cromossomo = %s" % str(Individuo1.cromossomo))
+limite = 3
+Individuo1 =  Individuo(espacos, valores, limite)
+print("Espaços = %s" % str(Individuo1.espacos))
+print("Valores = %s" % str(Individuo1.valores))
+print("Cromossomo = %s" % str(Individuo1.cromossomo))
+        
+print("\nComponentes da Carga")
+for i in range(len(lista_produtos)):
+    if Individuo1.cromossomo[i]== "1":
+        print("Nome: %s R$ %s " %(lista_produtos[i].nome, lista_produtos[i].valor))
+        
+Individuo1.avaliacao()
+print("Nota = %s" % Individuo1.nota_avaliacao)
+print("Espaço USado = %s" % Individuo1.espaco_usado)
