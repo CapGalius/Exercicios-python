@@ -56,6 +56,19 @@ class individuo():
                     self.cromossomo[i] = '1'
         print("Depois %s"%self.cromossomo)
         return self        
+   
+class AlgoritimoGenetico():
+    def __init__(self , tamanho_populacao):
+        self.tamanho_populacao = tamanho_populacao
+        self.populacao = []
+        self.geracao = 0
+        self.melhor_solucao = 0
+        
+    def inicializa_populacao(self, espacos, valores, limite_espacos):
+        for i in range(self.tamanho_populacao):
+            self.populacao.append(individuo(espacos, valores,limite_espacos))
+        self.melhor_solucao = self.populacao[0]   
+
         
 if __name__ == '__main__':
     #p1 = Produto("Iphone 6", 0.0000899, 2199.12)
@@ -86,25 +99,9 @@ if __name__ == '__main__':
         nomes.append(produto.nome)
 limite = 3
 
-individuo1 =  individuo(espacos, valores, limite)
-print("\nindividuo1")
-for i in range(len(lista_produtos)):
-    if individuo1.cromossomo[i]== "1":
-        print("Nome: %s R$ %s " %(lista_produtos[i].nome, lista_produtos[i].valor))
-individuo1.avaliacao()
-print("Nota = %s" % individuo1.nota_avaliacao)
-print("Espaço Usado = %s" % individuo1.espaco_usado)
-
-individuo2 =  individuo(espacos, valores, limite)
-print("\nindividuo2")
-for i in range(len(lista_produtos)):
-    if individuo2.cromossomo[i]== "1":
-        print("Nome: %s R$ %s " %(lista_produtos[i].nome, lista_produtos[i].valor))
-individuo2.avaliacao()
-print("Nota = %s" % individuo2.nota_avaliacao)
-print("Espaço Usado = %s" % individuo2.espaco_usado)
-
-individuo1.crossover(individuo2)
-
-individuo1.mutacao(0.05)
-individuo2.mutacao(0.05)
+tamanho_populacao = 20
+ag = AlgoritimoGenetico(tamanho_populacao)
+ag.inicializa_populacao
+for i in range(ag.tamanho_populacao):
+    print("***Individuo %s ****\n" % i,
+          "Espaços - %s\n" % str(ag.populacao))
