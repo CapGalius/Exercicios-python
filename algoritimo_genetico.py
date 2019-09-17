@@ -5,9 +5,9 @@ class Produto():
         self.nome = nome
         self.espaco = espaco
         self.valor = valor
-
-class individuo():
-    def __init__(self, espacos, valores, limite_espacos, geracao = 0):
+        
+class Individuo():
+    def __init__(self, espacos, valores, limite_espacos, geracao=0):
         self.espacos = espacos
         self.valores = valores
         self.limite_espacos = limite_espacos
@@ -17,48 +17,48 @@ class individuo():
         self.cromossomo = []
         
         for i in range(len(espacos)):
-           if random() < 0.5:
-               self.cromossomo.append("0")
-           else:
-               self.cromossomo.append("1")
-               
+            if random() < 0.5:
+                self.cromossomo.append("0")
+            else:
+                self.cromossomo.append("1")
+                
     def avaliacao(self):
         nota = 0
         soma_espacos = 0
         for i in range(len(self.cromossomo)):
-            if self.cromossomo[i] == '1':
-                nota += self.valores[i]
-                soma_espacos += self.espacos[i]
+           if self.cromossomo[i] == '1':
+               nota += self.valores[i]
+               soma_espacos += self.espacos[i]
         if soma_espacos > self.limite_espacos:
             nota = 1
         self.nota_avaliacao = nota
         self.espaco_usado = soma_espacos
         
     def crossover(self, outro_individuo):
-        corte = round(random() * len(self.cromossomo) )
+        corte = round(random()  * len(self.cromossomo))
         
         filho1 = outro_individuo.cromossomo[0:corte] + self.cromossomo[corte::]
         filho2 = self.cromossomo[0:corte] + outro_individuo.cromossomo[corte::]
         
-        filhos = [individuo(self.espacos, self.valores, self.limite_espacos, self.geracao+1),
-                  individuo(self.espacos, self.valores, self.limite_espacos, self.geracao+1)]
+        filhos = [Individuo(self.espacos, self.valores, self.limite_espacos, self.geracao + 1),
+                  Individuo(self.espacos, self.valores, self.limite_espacos, self.geracao + 1)]
         filhos[0].cromossomo = filho1
         filhos[1].cromossomo = filho2
         return filhos
     
     def mutacao(self, taxa_mutacao):
-        print("Antes %s" %self.cromossomo)
+        print("Antes %s " % self.cromossomo)
         for i in range(len(self.cromossomo)):
             if random() < taxa_mutacao:
                 if self.cromossomo[i] == '1':
                     self.cromossomo[i] = '0'
                 else:
                     self.cromossomo[i] = '1'
-        print("Depois %s"%self.cromossomo)
-        return self        
-   
-class AlgoritimoGenetico():
-    def __init__(self , tamanho_populacao):
+        print("Depois %s " % self.cromossomo)
+        return self
+        
+class AlgoritmoGenetico():
+    def __init__(self, tamanho_populacao):
         self.tamanho_populacao = tamanho_populacao
         self.populacao = []
         self.geracao = 0
@@ -66,10 +66,20 @@ class AlgoritimoGenetico():
         
     def inicializa_populacao(self, espacos, valores, limite_espacos):
         for i in range(self.tamanho_populacao):
-            self.populacao.append(individuo(espacos, valores,limite_espacos))
-        self.melhor_solucao = self.populacao[0]   
-
+            self.populacao.append(Individuo(espacos, valores, limite_espacos))
+        self.melhor_solucao = self.populacao[0]
         
+    def ordena_populacao(self):
+        self.populacao = sorted(self.populacao,
+                                key = lambda populacao: populacao.nota_avaliacao,
+                                reverse = True)
+        
+    def melhor_individuo(self, individuo):
+        if individuo.nota_avaliacao > self.melhor_solucao.nota_avaliacao:
+            self.melhor_solucao = individuo
+        
+        
+
 if __name__ == '__main__':
     #p1 = Produto("Iphone 6", 0.0000899, 2199.12)
     lista_produtos = []
@@ -87,21 +97,23 @@ if __name__ == '__main__':
     lista_produtos.append(Produto("Geladeira Consul", 0.870, 1199.89))
     lista_produtos.append(Produto("Notebook Lenovo", 0.498, 1999.90))
     lista_produtos.append(Produto("Notebook Asus", 0.527, 3999.00))
-    #for Produto in lista_produtos:
-        #print(Produto)
+    
     espacos = []
     valores = []
     nomes = []
-    
     for produto in lista_produtos:
         espacos.append(produto.espaco)
         valores.append(produto.valor)
         nomes.append(produto.nome)
-limite = 3
-
-tamanho_populacao = 20
-ag = AlgoritimoGenetico(tamanho_populacao)
-ag.inicializa_populacao
-for i in range(ag.tamanho_populacao):
-    print("***Individuo %s ****\n" % i,
-          "Espaços - %s\n" % str(ag.populacao))
+    limite = 3
+    
+    tamanho_populacao = 20
+    ag = AlgoritmoGenetico(tamanho_populacao)
+    ag.inicializa_populacao(espacos, valores, limite)
+    for individuo in ag.populacao:
+        individuo.avaliacao()
+    ag.ordena_populacao()
+    ag.melhor_individuo(ag.populacao[0])
+    print("Melhor solução para o problema: %s" % ag.melhor_solucao.cromossomo,
+          "Nota = %s\n" % ag.melhor_solucao.nota_avaliacao)
+        
