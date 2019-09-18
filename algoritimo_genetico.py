@@ -1,5 +1,6 @@
 from random import random
 import matplotlib.pyplot as plt
+import pymysql
 
 class Produto():
     def __init__(self, nome, espaco, valor):
@@ -152,8 +153,20 @@ class AlgoritmoGenetico():
         
         
 if __name__ == '__main__':
-    #p1 = Produto("Iphone 6", 0.0000899, 2199.12)
     lista_produtos = []
+    '''
+    conexao = pymysql.connect(host ='localhost', user = 'root', passwd = 'P4$$w0rd', db = 'produtos')
+    cursor = conexao.cursor()
+    cursor.execute('select nome, espaco, valor, quantidade from produtos')
+    
+    for produto in cursor:
+        print(produto[0])
+    
+    cursor.close()
+    conexao.close()
+    '''
+    
+    
     lista_produtos.append(Produto("Geladeira Dako", 0.751, 999.90))
     lista_produtos.append(Produto("Iphone 6", 0.0000899, 2911.12))
     lista_produtos.append(Produto("TV 55' ", 0.400, 4346.99))
@@ -167,7 +180,8 @@ if __name__ == '__main__':
     lista_produtos.append(Produto("Geladeira Brastemp", 0.635, 849.00))
     lista_produtos.append(Produto("Geladeira Consul", 0.870, 1199.89))
     lista_produtos.append(Produto("Notebook Lenovo", 0.498, 1999.90))
-    lista_produtos.append(Produto("Notebook Asus", 0.527, 3999.00))
+    lista_produtos.append(Produto("Notebook Asus", 0.527, 3999.00)) 
+    
     
     espacos = []
     valores = []
