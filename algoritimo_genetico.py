@@ -158,9 +158,10 @@ if __name__ == '__main__':
     conexao = pymysql.connect(host ='localhost', user = 'usuario', passwd = 'password', db = 'produtos')
     cursor = conexao.cursor()
     cursor.execute('select nome, espaco, valor, quantidade from produtos')
-    
     for produto in cursor:
-        print(produto[0])
+        for i in range(produto[3]):
+            lista_produtos.append(Produto(produto[0], produto[1], produto[2]))
+    
     
     cursor.close()
     conexao.close()
@@ -189,7 +190,7 @@ if __name__ == '__main__':
         espacos.append(produto.espaco)
         valores.append(produto.valor)
         nomes.append(produto.nome)
-    limite = 3
+    limite = 15
     tamanho_populacao = 20
     taxa_mutacao = 0.01
     numero_geracoes = 100
