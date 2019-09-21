@@ -16,7 +16,8 @@ class Produto():
 
 
 lista_produtos = []
-conexao = pymysql.connect(host= 'localhost', user= 'usuario',password = 'password', db= 'produtos')
+conexao = pymysql.connect(host='localhost', user='usuario',
+                          password='password', db='produtos')
 cursor = conexao.cursor()
 cursor.execute('select nome, espaco, valor, quantidade from produtos')
 for produto in cursor:
@@ -57,35 +58,41 @@ toolbox.register("individual", tools.initRepeat, creator.Individual,
                  toolbox.attr_bool, n=len(espacos))
 toolbox.register("population", tools.initRepeat, list, toolbox.individual)
 
+
 def avaliacao(individual):
     nota = 0
     soma_espacos = 0
     for i in range(len(individual)):
-       if individual[i] == 1:
-           nota += valores[i]
-           soma_espacos += espacos[i]
+        if individual[i] == 1:
+            nota += valores[i]
+            soma_espacos += espacos[i]
+
     if soma_espacos > limite:
         nota = 1
     return nota / 100000,
 
+
 toolbox.register("evaluate", avaliacao)
 toolbox.register("mate", tools.cxOnePoint)
-toolbox.register("mutate", tools.mutFlipBit, indpb = 0.01)
+toolbox.register("mutate", tools.mutFlipBit, indpb=0.01)
 toolbox.register("select", tools.selRoulette)
 
 if __name__ == "__main__":
-    random.seed(1)
-    populacao = toolbox.population(n = 20)
+
+    '''random.seed(1)'''
+
+    populacao = toolbox.population(n=20)
     probabilidade_crossover = 1.0
     probabilidade_mutacao = 0.01
     numero_geracoes = 100
-    
-    estatisticas = tools.Statistics(key=lambda individuo: individuo.fitness.values)
+
+    estatisticas = tools.Statistics(key=lambda
+                                    individuo: individuo.fitness.values)
     estatisticas.register("max", numpy.max)
     estatisticas.register("min", numpy.min)
     estatisticas.register("med", numpy.mean)
     estatisticas.register("std", numpy.std)
-    
+
     populacao, info = algorithms.eaSimple(populacao, toolbox,
                                           probabilidade_crossover,
                                           probabilidade_mutacao,
@@ -94,31 +101,15 @@ if __name__ == "__main__":
     for individuo in melhores:
         print(individuo)
         print(individuo.fitness)
-        #print(individuo[1])
         soma = 0
         for i in range(len(lista_produtos)):
             if individuo[i] == 1:
                 soma += valores[i]
                 print("Nome: %s R$ %s " % (lista_produtos[i].nome,
                                            lista_produtos[i].valor))
-        print("Melhor solução: %s" % soma)
-        
+        print("Melhor solução: R$: %s" % soma)
+
     valores_grafico = info.select("max")
     plt.plot(valores_grafico)
     plt.title("Acompanhamento dos valores")
     plt.show()
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
