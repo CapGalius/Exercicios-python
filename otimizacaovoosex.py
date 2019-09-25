@@ -19,6 +19,10 @@ for linha in open('voos.txt'):
     voos[(_origem, _destino)].append((_saida, _chegada, int(_preco)))
 
 # [1,4, 3,2, 7,3, 6,3, 2,4, 5,3]
+print("-" *60)
+print('Impressão Agenda')
+print("-" *60)
+
 def imprimir_agenda(agenda):
     id_voo = -1
     for i in range(len(agenda) // 2):
@@ -234,7 +238,16 @@ imprimir_agenda(solucao_genetico)
 print("-" *60)
 print('Comparação valores Algoritimos')
 print("-" *60)
+
 print("Genético : ", custo_genetico)
 print("Randomico: ", custo_randomica)
 print("Encosta  : " ,custo_subida_encosta)
 print("Tempera  : ", custo_tempera_simulada)
+
+melhoralg = []
+melhoralg.append(custo_genetico)
+melhoralg.append(custo_randomica)
+melhoralg.append(custo_subida_encosta)
+melhoralg.append(custo_tempera_simulada)
+malg = min(melhoralg, key=int)
+print("Melhor Algoritimo : ", malg)
