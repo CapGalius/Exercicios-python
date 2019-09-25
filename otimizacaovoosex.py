@@ -136,7 +136,12 @@ def subida_encosta(dominio, funcao_custo):
 solucao_subida_encosta = subida_encosta(dominio, funcao_custo)
 custo_subida_encosta = funcao_custo(solucao_subida_encosta)
 imprimir_agenda(solucao_subida_encosta)
-                    
+
+
+print("-" *60)
+print('Algoritimo Tempera Simulada')
+print("-" *60)
+
 def tempera_simulada(dominio, funcao_custo, temperatura = 10000.0, resfriamento = 0.95, passo = 1):
     solucao = [random.randint(dominio[i][0], dominio[i][1]) for i in range(len(dominio))]
 
@@ -165,6 +170,9 @@ solucao_tempera_simulada = tempera_simulada(dominio, funcao_custo)
 custo_tempera_simulada = funcao_custo(solucao_tempera_simulada)
 imprimir_agenda(solucao_tempera_simulada)
 
+print("-" *60)
+print('Algoritimo Custo Genético')
+print("-" *60)
 
 def mutacao(dominio, passo, solucao):
     i = random.randint(0, len(dominio) - 1)
@@ -222,3 +230,11 @@ def genetico(dominio, funcao_custo, tamanho_populacao = 100, passo = 1,
 solucao_genetico = genetico(dominio, funcao_custo)
 custo_genetico = funcao_custo(solucao_genetico)
 imprimir_agenda(solucao_genetico)
+
+print("-" *60)
+print('Comparação valores Algoritimos')
+print("-" *60)
+print("Genético : ", custo_genetico)
+print("Randomico: ", custo_randomica)
+print("Encosta  : " ,custo_subida_encosta)
+print("Tempera  : ", custo_tempera_simulada)
