@@ -17,7 +17,7 @@ class Produto():
 
 lista_produtos = []
 conexao = pymysql.connect(host='localhost', user='usuario',
-                          password='password', db='produtos')
+                          password='P4$$w0rd', db='produtos')
 cursor = conexao.cursor()
 cursor.execute('select nome, espaco, valor, quantidade from produtos')
 for produto in cursor:
