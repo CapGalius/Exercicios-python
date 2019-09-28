@@ -1,5 +1,8 @@
 import requests
 import json
+from datetime import date
+
+dias_semana = ['Domingo', 'Segunda-Feira', 'Terça-Feira', 'Quarta-Feira','Quinta-Feira', 'Sexta-Feira', 'Sábado']
 
 accuweatherAPIKey = "nTH7fJFVxdSwAa1NAXxR6XAFTJ92oU7R"
 
@@ -62,6 +65,35 @@ def pegarTempoAgora(codigoLocal, nomeLocal):
         except:
             return None
 
+def pegarPrevisao5Dias(codigoLocal):
+
+    DailyAPIUrl = "http://dataservice.accuweather.com/" \
+    + "forecasts/v1/daily/5day/" + codigoLocal + "?apikey=" + accuweatherAPIKey \
+    + "&language=pt-br&metric=true"
+
+    r = requests.get(DailyAPIUrl)
+    if (r.status_code != 200):
+        print("Não foi possivel obter previsão para 5 dias !")
+        return None
+    else:
+        try:
+            DailyResponse = json.loads(r.text)
+            infoClima5Dias = []
+            for dia in DailyResponse['DailyForecasts']:
+                climaDia = {}
+                climaDia['max'] = dia['Temperature']['Maximum']['Value']
+                climaDia['min'] = dia['Temperature']['Minimum']['Value']
+                climaDia['clima'] = dia['Day']['IconPhrase']
+                diaSemana = int(date.fromtimestamp(dia['EpochDate']).strftime("%w"))
+                climaDia['dia'] = dias_semana[diaSemana]
+                infoClima5Dias.append(climaDia)
+            return infoClima5Dias
+
+        except:
+            return None
+
+
+
 try:
     coordenadas = pegarCoordenadas()
     local = pegarCodigoLocal(coordenadas['lat'], coordenadas['long'])
@@ -69,6 +101,17 @@ try:
     print('Clima atual em: ' + climaAtual['nomeLocal'])
     print(climaAtual['textoClima'])
     print('temperatura: ' + str(climaAtual['temperatura']) + "\xb0" + "C")
+    print('\nClima para hoje e para os próximos dias:\n')
+
+    previsao5dias = pegarPrevisao5Dias(local['codigoLocal'])
+    for dia in previsao5dias:
+        print(dia['dia'])
+        print('Mínima: ' + str(dia['min']) + "\xb0" + "C")
+        print('Máxima: ' + str(dia['max']) + "\xb0" + "C")
+        print('Clima: ' + dia['clima'])
+        print('-'*20)
+
+
 except:
     print("Erro ao processar a solicitação entre em contato com o Suporte!")
 
