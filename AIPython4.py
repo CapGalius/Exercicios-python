@@ -2,8 +2,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.naive_bayes import GaussianNB 
 #from sklearn import cross_validation
+
 from sklearn.model_selection import train_test_split
 from sklearn.model_selection import cross_val_score
+# 
 from utilities import visualize_classifier
 
 # Input file containing data
