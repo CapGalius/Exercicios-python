@@ -1,4 +1,5 @@
 import time
+import math
 
 def is_prime_v1(n):
     """Return 'True' if number is a prime number. False otherwise"""
