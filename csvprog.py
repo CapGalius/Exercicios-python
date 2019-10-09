@@ -17,8 +17,22 @@ for row in reader:
     adj_close = float(row[6])
 
     data.append([date, open_price,high,low,close,volume,adj_close])
-print(data[0])
 
+#Compute and store daily stock returns
+returns_path = "/home/galileu/Exercicios-python/google_returns.csv"
+file = open(returns_path,'w')
+writer = csv.writer(file)
+writer.writerow(["Date", "Return"])
+for i in range(len(data)-1):
+    todays_row = data[i]
+    todays_date = todays_row[0]
+    todays_price = todays_row[-1]
+    yesterday_row = data[i+1]
+    yesterday_price = yesterday_row[-1]
+
+    daily_return = (todays_price - yesterday_price) / yesterday_price
+    formatted_date = todays_date.strftime('%m/%d/%Y')
+    writer.writerow([formatted_date,daily_return])
 
 #file = open(path)
 #for line in file:
