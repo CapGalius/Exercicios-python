@@ -2,10 +2,10 @@ import cv2
 
 classificador = cv2.CascadeClassifier('/home/galileu/Exercicios-python/Deteccao/cascades/haarcascade_frontalface_default.xml')
 
-imagem = cv2.imread('/home/galileu/Exercicios-python/Deteccao/pessoas/beatles.jpg')
+imagem = cv2.imread('/home/galileu/Exercicios-python/Deteccao/pessoas/pessoas3.jpg')
 imagemCinza = cv2.cvtColor(imagem, cv2.COLOR_BGR2GRAY)
 
-facesDetectadas = classificador.detectMultiScale(imagemCinza)
+facesDetectadas = classificador.detectMultiScale(imagemCinza, scaleFactor=1.1)
 print(len(facesDetectadas))
 print(facesDetectadas)
  
