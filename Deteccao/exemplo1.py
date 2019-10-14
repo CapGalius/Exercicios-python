@@ -7,3 +7,10 @@ imagemCinza = cv2.cvtColor(imagem, cv2.COLOR_BGR2GRAY)
 
 facesDetectadas = classificador.detectMultiScale(imagemCinza)
 print(len(facesDetectadas))
+print(facesDetectadas)
+
+for (x,y, l, a) in facesDetectadas:
+    print(x, y, l, a)
+    cv2.rectangle(imagem, (x, y), (x + l, y + a), (255, 0, 0), 2)
+    cv2.imshow("Faces Encontradas", imagem)
+    cv2.waitKey()
