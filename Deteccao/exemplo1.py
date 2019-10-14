@@ -5,7 +5,7 @@ classificador = cv2.CascadeClassifier('/home/galileu/Exercicios-python/Deteccao/
 imagem = cv2.imread('/home/galileu/Exercicios-python/Deteccao/pessoas/pessoas3.jpg')
 imagemCinza = cv2.cvtColor(imagem, cv2.COLOR_BGR2GRAY)
 
-facesDetectadas = classificador.detectMultiScale(imagemCinza, scaleFactor=1.1)
+facesDetectadas = classificador.detectMultiScale(imagemCinza, scaleFactor=1.1, minNeighbors=10, minSize=(30, 30))
 print(len(facesDetectadas))
 print(facesDetectadas)
  
