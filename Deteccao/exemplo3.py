@@ -8,7 +8,7 @@ while True:
     conectado, frame = video.read()
 
     frameCinza = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-    facesDetectadas = classificadorFace.detectMultiScale(frameCinza, minSize=(60,60))
+    facesDetectadas = classificadorFace.detectMultiScale(frameCinza, minSize=(70,70))
 
     for (x, y, l , a) in facesDetectadas:
         cv2.rectangle(frame, (x, y), (x + l, y + a), (255, 0, 0), 2)
