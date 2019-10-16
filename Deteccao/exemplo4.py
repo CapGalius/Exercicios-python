@@ -1,10 +1,10 @@
 import cv2
 
-#classificador = cv2.CascadeClassifier('cascades\\haarcascade_frontalcatface.xml')
-#classificador = cv2.CascadeClassifier('cascades\\relogios.xml')
-classificador = cv2.CascadeClassifier('cascades\\cars.xml')
+#classificador = cv2.CascadeClassifier('/home/galileu/Exercicios-python/Deteccao/cascades/haarcascade_frontalcatface.xml')
+#classificador = cv2.CascadeClassifier('/home/galileu/Exercicios-python/Deteccao/cascades/relogios.xml')
+classificador = cv2.CascadeClassifier('/home/galileu/Exercicios-python/Deteccao/cascades/cars.xml')
 
-imagem = cv2.imread('/home/galileu/Exercicios-python/Deteccao/outros/carro1.jpg')
+imagem = cv2.imread('/home/galileu/Exercicios-python/Deteccao/carro1.jpg')
 imagemCinza = cv2.cvtColor(imagem, cv2.COLOR_BGR2GRAY)
 
 detectado = classificador.detectMultiScale(imagemCinza, scaleFactor=1.01)
