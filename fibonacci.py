@@ -3,7 +3,7 @@ def fibonacci(n):
 # If we cache the valuem then return it
     if n in fibonacci_cache:
         return fibonacci_cache[n]
-    # COmpute the Nth term        
+    # Compute the Nth term        
     if n == 1:
         value = 1
     elif n == 2:
