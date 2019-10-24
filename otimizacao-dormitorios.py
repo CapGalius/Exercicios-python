@@ -1,4 +1,4 @@
-import otimizacao_voos
+import otimizacaovoosex
 
 dormitorios = ['São Paulo', 'Flamengo', 'Coritiba', 'Cruzeiro', 'Fortaleza']
 
@@ -49,19 +49,20 @@ def funcao_custo(solucao):
 
 funcao_custo([6,1,2,1,2,0,2,2,0,0])
 
-solucao_randomica = otimizacao_voos.pesquisa_randomica(dominio, funcao_custo)
+print("-"*20)
+solucao_randomica = otimizacaovoosex.pesquisa_randomica(dominio, funcao_custo)
 custo_randomica = funcao_custo(solucao_randomica)
 imprimir_solucao(solucao_randomica)
-
-solucao_subida_encosta = otimizacao_voos.subida_encosta(dominio, funcao_custo)
+print("-"*20)
+solucao_subida_encosta = otimizacaovoosex.subida_encosta(dominio, funcao_custo)
 custo_subida_encosta = funcao_custo(solucao_subida_encosta)
 imprimir_solucao(solucao_subida_encosta)  
-
-solucao_tempera = otimizacao_voos.tempera_simulada(dominio, funcao_custo)
+print("-"*20)
+solucao_tempera = otimizacaovoosex.tempera_simulada(dominio, funcao_custo)
 custo_tempera = funcao_custo(solucao_tempera)
 imprimir_solucao(solucao_tempera) 
-
-solucao_genetico = otimizacao_voos.genetico(dominio, funcao_custo)
+print("-"*20)
+solucao_genetico = otimizacaovoosex.genetico(dominio, funcao_custo)
 custo_genetico = funcao_custo(solucao_genetico)
 imprimir_solucao(solucao_genetico)     
 
