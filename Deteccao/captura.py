@@ -3,7 +3,7 @@ import cv2
 
 classificador = cv2.CascadeClassifier("/home/galileu/Exercicios-python/Deteccao/cascades/haarcascade_frontalface_default.xml")
 #classificaorOlho = cv2.CascadeClassifier("/home/galileu/Exercicios-python/Deteccao/cascades/haarcascade_eye.xml")
-camera = cv2.VideoCapture(1)
+camera = cv2.VideoCapture(0)
 amostra = 1
 numeroAmostras = 25
 id = input('Digite seu nome:  ')
