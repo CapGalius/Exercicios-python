@@ -22,8 +22,8 @@ classifier = svm.SVC()
 classifier.fit(x, y)
 
 
-img = mpimg.imread('/home/galileu/Exercicios-python/curso_machine_learning/Digits/number.png')
-
+#img = mpimg.imread('/home/galileu/Exercicios-python/curso_machine_learning/Digits/number.png')
+img = mpimg.imread('/home/galileu/Exercicios-python/curso_machine_learning/Digits/number2.png')
 def rgb2gray(rgb):
     img_array = np.dot(rgb[...,:3], [0.299, 0.587, 0.114])
     img_array = (16 - img_array*16).astype(int)
@@ -32,3 +32,11 @@ def rgb2gray(rgb):
 
 previsao = classifier.predict([rgb2gray(img)])
 print(previsao)
+
+#Teste com regressão logística
+from sklearn.linear_model import LogisticRegression
+logreg = LogisticRegression(multi_class='ovr')
+logreg.fit(x, y)
+previsoes_logreg = logreg.predict([rgb2gray(img)])
+#acertos_logreg = metrics.accuracy_score(y_test,previsoes_logreg)
+print(previsoes_logreg)
