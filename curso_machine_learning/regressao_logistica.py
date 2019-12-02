@@ -6,13 +6,13 @@ iris = load_iris()
 x = iris.data
 print(x)
 
-#Target
+#Target 
 y = iris.target
 print(y)
 
 #Import KNN
 from sklearn.neighbors import KNeighborsClassifier
-knn = KNeighborsClassifier(n_neighbors=1)
+knn = KNeighborsClassifier(n_neighbors=11)
 
 #Treinar maquina
 knn.fit(x,y)
@@ -24,7 +24,7 @@ print(iris.target_names[species])
 
 #Separar dados em 2 grupos
 from sklearn.model_selection import train_test_split
-x_train, x_test, y_train, y_test = train_test_split(x,y, test_size=0.25)
+x_train, x_test, y_train, y_test = train_test_split(x,y, test_size=0.40)
 
 
 #Avaliação de performance do Modelo
@@ -33,4 +33,11 @@ previsoes =knn.predict(x_test)
 from sklearn import metrics
 acertos = metrics.accuracy_score(y_test,previsoes)
 print(acertos)
-print(acertos*100,'%')
+
+#Regressao logistica
+from sklearn.linear_model import LogisticRegression
+logreg = LogisticRegression(multi_class='ovr')
+logreg.fit(x_train, y_train)
+previsoes_logreg = logreg.predict(x_test)
+acertos_logreg = metrics.accuracy_score(y_test,previsoes_logreg)
+print(acertos_logreg)
