@@ -11,14 +11,14 @@ import pybullet_envs
 class Hp():
     def __init__(self):
         self.nb_steps = 1000
-        self.episode_lenght = 10000
+        self.episode_lenght = 1000
         self.learning_rate = 0.02
-        self.nb_directions = 16
-        self.nb_best_directions = 16
+        self.nb_directions = 18
+        self.nb_best_directions = 18
         assert self.nb_best_directions <= self.nb_directions
         self.noise = 0.03
         self.seed = 1
-        self.env_name = 'HalfCheetahBulletEnv-v0'
+        self.env_name = 'Enduro-ram-v0'
         
 # Normalização dos estados   
 class Normalizer():
@@ -130,32 +130,6 @@ nb_inputs = env.observation_space.shape[0]
 nb_outputs = env.action_space.shape[0]
 policy = Policy(nb_inputs, nb_outputs)
 normalizer = Normalizer(nb_inputs)
-train(env, policy, normalizer, hp)
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+train(env, policy, normalizer, hp)    
     
         

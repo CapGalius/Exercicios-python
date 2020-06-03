@@ -155,7 +155,7 @@ class AlgoritmoGenetico():
 if __name__ == '__main__':
    
     lista_produtos = []
-    conexao = pymysql.connect(host= 'localhost', user= 'usuario',password = 'P4$$w0rd', db= 'PRODUTOS')
+    conexao = pymysql.connect(host= 'localhost', user= 'root',password = 'P4$$w0rd', db= 'PRODUTOS')
     cursor = conexao.cursor()
     cursor.execute('select nome, espaco, valor, quantidade from produtos')
     for produto in cursor:
