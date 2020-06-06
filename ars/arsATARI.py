@@ -18,7 +18,7 @@ class Hp():
         assert self.nb_best_directions <= self.nb_directions
         self.noise = 0.03
         self.seed = 1
-        self.env_name = 'Enduro-ram-v0'
+        self.env_name = 'HalfCheetahBulletEnv-v0'
         
 # Normalização dos estados   
 class Normalizer():
