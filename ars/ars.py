@@ -11,7 +11,7 @@ import pybullet_envs
 class Hp():
     def __init__(self):
         self.nb_steps = 1000
-        self.episode_lenght = 10000
+        self.episode_lenght = 1000
         self.learning_rate = 0.02
         self.nb_directions = 16
         self.nb_best_directions = 16
