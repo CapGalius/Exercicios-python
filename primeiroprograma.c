@@ -28,7 +28,7 @@ int main()
 
 {
 
-       setlocale(LC_ALL, "Portuguese"); //para aceitar caracteres do português
+       setlocale(LC_ALL,NULL); //para aceitar caracteres do português
 
        system("color A"); //Texto em verde -  Saudades do Monitor CGA
 
