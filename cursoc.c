@@ -1,15 +1,15 @@
 #include<stdio.h>
-#include <stdlib.h>
-#include<locale.h> // configuraÁ„o de acentos n„o remover
+#include<stdlib.h>
+#include<locale.h> // configura√ß√£o de acentos n√£o remover
 
 int main(){
-    setlocale(LC_ALL,""); // configuraÁ„o de acentos n„o remover do main
+    setlocale(LC_ALL,"Brasil"); // configura√ß√£o de acentos n√£o remover do main lembrar de setar chcp no win para 65001
     system("color A"); //Texto em verde -  Saudades do Monitor CGA
 
     int idade;
-    printf("Qual È a sua idade? ");
+    printf("Qual √© a sua idade? ");
     scanf("%d", &idade);
-    printf("A sua idade È: %d", idade);
+    printf("A sua idade √©: %d", idade);
 
     return 0;
 
